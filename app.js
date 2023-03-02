@@ -112,8 +112,8 @@ let lima = {
     cookiesperhour:[],
     getcookies: function() {
         for (i = 0; i < this.hoursofoperation.length; i++ ) {
-            console.log("this.avg", this.avg)
-            console.log("this.customersperhour()", this.customersperhour())
+            //console.log("this.avg", this.avg)
+            //console.log("this.customersperhour()", this.customersperhour())
             let cookies = Math.ceil(this.avg * this.customersperhour())
             this.cookiesperhour.push(cookies)
         }
@@ -123,6 +123,9 @@ let lima = {
 }
 // call lima function
 lima.getcookies();
+
+// Grab Class, for each initeration of 'i' create a list and print HTML, append it.
+
 let hoursArray = document.querySelector('.output')
 for (let i = 0; i < seattle.hoursofoperation.length; i++){
     let variable = document.createElement("li");
