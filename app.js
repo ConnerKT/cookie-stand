@@ -28,17 +28,9 @@ let seattle = {
 }
 // calls each function so the array of cookies is put in array (if not its undefined)
 seattle.getcookies();
-tokyo.getcookies();
-dubai.getcookies();
-paris.getcookies();
-lima.getcookie();
+
 // makes List for each city
-let hoursArray = document.querySelector('.output')
-for (let i = 0; i < seattle.hoursofoperation.length; i++){
-    let variable = document.createElement("li");
-    variable.innerHTML = `${seattle.hoursofoperation[i]}: ${seattle.cookiesperhour[i]} cookies | ${tokyo.hoursofoperation[i]}: ${toyko.cookiesperhour[i]} cookies | ${dubai.hoursofoperation[i]}: ${dubai.cookiesperhour[i]} cookies | ${paris.hoursofoperation[i]}: ${paris.cookiesperhour[i]} cookies | ${lima.hoursofoperation[i]}: ${lima.cookiesperhour[i]} cookies`;
-    hoursArray.append(variable);
-}
+
 
 let tokyo = {
     min:3,
@@ -60,6 +52,8 @@ let tokyo = {
     }
 
 }
+// call tokyo function
+tokyo.getcookies();
 
 let dubai = {
     min:11,
@@ -81,6 +75,9 @@ let dubai = {
     }
 
 }
+// call dubai function
+dubai.getcookies();
+
 let paris = {
     min:20,
     max:38,
@@ -101,6 +98,9 @@ let paris = {
     }
 
 }
+// call paris function
+paris.getcookies();
+
 let lima = {
     min:2,
     max:16,
@@ -120,4 +120,12 @@ let lima = {
         return this.cookiesperhour 
     }
 
+}
+// call lima function
+lima.getcookies();
+let hoursArray = document.querySelector('.output')
+for (let i = 0; i < seattle.hoursofoperation.length; i++){
+    let variable = document.createElement("li");
+    variable.innerHTML = `${seattle.hoursofoperation[i]}: ${seattle.cookiesperhour[i]} cookies | ${tokyo.hoursofoperation[i]}: ${tokyo.cookiesperhour[i]} cookies | ${dubai.hoursofoperation[i]}: ${dubai.cookiesperhour[i]} cookies | ${paris.hoursofoperation[i]}: ${paris.cookiesperhour[i]} cookies | ${lima.hoursofoperation[i]}: ${lima.cookiesperhour[i]} cookies`;
+    hoursArray.append(variable);
 }
