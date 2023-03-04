@@ -47,6 +47,7 @@ function cookieStandLocation(min, max, avg, location, hours){
             document.getElementById("cookietb").append(thDemo)
         }
 
+
         for (let i = 0; i < this.hoursofoperation.length; i++) {
             // tdDemo is the data for cookiesperhour 
             let tdDemo = document.createElement('td')
@@ -54,6 +55,7 @@ function cookieStandLocation(min, max, avg, location, hours){
             tdDemo.innerHTML = this.cookiesperhour[i];
             // We are putting the data in the row
             Row.append(tdDemo);
+
         }
  
     }
@@ -61,8 +63,6 @@ function cookieStandLocation(min, max, avg, location, hours){
        return stand;
     
 }
-
-
 
 //Setting up the objects we want, but with its own unique data
 
