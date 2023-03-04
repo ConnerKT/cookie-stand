@@ -59,6 +59,7 @@ function cookieStandLocation(min, max, avg, location, hours){
             tdDemo.innerHTML = this.cookiesperhour[i];
             // We are putting the data in the row
             Row.append(tdDemo);
+
         }
  
     }
@@ -66,8 +67,6 @@ function cookieStandLocation(min, max, avg, location, hours){
        return stand;
     
 }
-
-
 
 //Setting up the objects we want, but with its own unique data
 
