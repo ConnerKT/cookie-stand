@@ -32,21 +32,26 @@ function cookieStandLocation(min, max, avg, location, hours){
         }
         return this.cookiesperhour;
     }
+    // This is the render function. Its rendering all of the content we want on our HTML
     stand.render = function(){
         let Row = document.createElement('tr');
         let LocationTD = document.createElement('td');
         let thDemo = document.createElement('th');
+        // We are assigning the location data to locationTD as HTML
         LocationTD.innerHTML = this.location;
+        // We are adding LocationTD to Row
         Row.append(LocationTD);
         // We are creating an row to put in our placeholder
         document.getElementById("cookietb").append(Row);
+
+        // This for loop is to loop and create the hours of operation (WIP)
 
         for (let i = 0; i< this.hoursofoperation.length; i++) {
             let thDemo = document.createElement('th');
             thDemo.innerHTML = this.hoursofoperation[i];
             document.getElementById("cookietb").append(thDemo)
         }
-
+        // This for loop is to create the data on our table
         for (let i = 0; i < this.hoursofoperation.length; i++) {
             // tdDemo is the data for cookiesperhour 
             let tdDemo = document.createElement('td')
