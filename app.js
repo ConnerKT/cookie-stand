@@ -5,130 +5,89 @@ function getRandom(max, min) {
     return random;
 }
 
-// Objects with the min, max, and avg as properties for each city
-let seattle = {
-    min:23,
-    max:65,
-    avg:6.3,
-    hoursofoperation:["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"],
-    customersperhour: function() {
-        return getRandom(this.max, this.min)
-    },
-    cookiesperhour:[],
-    getcookies: function() {
-        for (i = 0; i < this.hoursofoperation.length; i++ ) {
-            //console.log("this.avg", this.avg)
-            //console.log("this.customersperhour()", this.customersperhour())
-            let cookies = Math.ceil(this.avg * this.customersperhour())
-            this.cookiesperhour.push(cookies)
-        }
-        return this.cookiesperhour 
+// Declaring Hours Of Operation as a variable to be reused in constr. function
+let hoursofoperation = ["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"]
+
+// Defining Constructor Function (Parameters are the info we store uniquely for each object we create from this function)
+function cookieStandLocation(min, max, avg, location, hours){
+    let stand = {};
+    stand.min = min;
+    stand.max = max;
+    stand.avg = avg;
+    stand.location = location;
+    stand.cookiesperhour= [];
+
+    stand.hoursofoperation = hours;
+
+    // The customer randomizer
+    stand.getCustomers = function() {
+        return getRandom(this.max, this.min);
     }
 
-}
-// calls each function so the array of cookies is put in array (if not its undefined)
-seattle.getcookies();
-
-// makes List for each city
-
-
-let tokyo = {
-    min:3,
-    max:24,
-    avg:1.2,
-    hoursofoperation:["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"],
-    customersperhour: function() {
-        return getRandom(this.max, this.min)
-    },
-    cookiesperhour:[],
-    getcookies: function() {
+    // The cookie math, that pushes the data we have into an array
+    stand.getCookies = function getCookies() {
         for (i = 0; i < this.hoursofoperation.length; i++ ) {
-            console.log("this.avg", this.avg)
-            console.log("this.customersperhour()", this.customersperhour())
-            let cookies = Math.ceil(this.avg * this.customersperhour())
-            this.cookiesperhour.push(cookies)
+            let cookies = Math.ceil(this.avg * this.getCustomers())
+            this.cookiesperhour.push(cookies);
         }
-        return this.cookiesperhour 
+        return this.cookiesperhour;
     }
+    stand.render = function(){
+        let Row = document.createElement('tr');
+        let LocationTD = document.createElement('td');
+        let thDemo = document.createElement('th');
+        LocationTD.innerHTML = this.location;
+        Row.append(LocationTD);
+        // We are creating an row to put in our placeholder
+        document.getElementById("cookietb").append(Row);
 
-}
-// call tokyo function
-tokyo.getcookies();
-
-let dubai = {
-    min:11,
-    max:38,
-    avg:3.7,
-    hoursofoperation:["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"],
-    customersperhour: function() {
-        return getRandom(this.max, this.min)
-    },
-    cookiesperhour:[],
-    getcookies: function() {
-        for (i = 0; i < this.hoursofoperation.length; i++ ) {
-            console.log("this.avg", this.avg)
-            console.log("this.customersperhour()", this.customersperhour())
-            let cookies = Math.ceil(this.avg * this.customersperhour())
-            this.cookiesperhour.push(cookies)
+        for (let i = 0; i< this.hoursofoperation.length; i++) {
+            let thDemo = document.createElement('th');
+            thDemo.innerHTML = this.hoursofoperation[i];
+            document.getElementById("cookietb").append(thDemo)
         }
-        return this.cookiesperhour 
-    }
 
-}
-// call dubai function
-dubai.getcookies();
 
-let paris = {
-    min:20,
-    max:38,
-    avg:2.3,
-    hoursofoperation:["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"],
-    customersperhour: function() {
-        return getRandom(this.max, this.min)
-    },
-    cookiesperhour:[],
-    getcookies: function() {
-        for (i = 0; i < this.hoursofoperation.length; i++ ) {
-            console.log("this.avg", this.avg)
-            console.log("this.customersperhour()", this.customersperhour())
-            let cookies = Math.ceil(this.avg * this.customersperhour())
-            this.cookiesperhour.push(cookies)
+        for (let i = 0; i < this.hoursofoperation.length; i++) {
+            // tdDemo is the data for cookiesperhour 
+            let tdDemo = document.createElement('td')
+            // Creating an element for the data
+            tdDemo.innerHTML = this.cookiesperhour[i];
+            // We are putting the data in the row
+            Row.append(tdDemo);
+
         }
-        return this.cookiesperhour 
+ 
     }
-
+    
+       return stand;
+    
 }
-// call paris function
-paris.getcookies();
 
-let lima = {
-    min:2,
-    max:16,
-    avg:4.6,
-    hoursofoperation:["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"],
-    customersperhour: function() {
-        return getRandom(this.max, this.min)
-    },
-    cookiesperhour:[],
-    getcookies: function() {
-        for (i = 0; i < this.hoursofoperation.length; i++ ) {
-            //console.log("this.avg", this.avg)
-            //console.log("this.customersperhour()", this.customersperhour())
-            let cookies = Math.ceil(this.avg * this.customersperhour())
-            this.cookiesperhour.push(cookies)
-        }
-        return this.cookiesperhour 
-    }
+//Setting up the objects we want, but with its own unique data
 
-}
-// call lima function
-lima.getcookies();
+const seattle = cookieStandLocation(23, 65, 6.3, 'Seattle', hoursofoperation);
+seattle.getCustomers();
+seattle.getCookies();
+seattle.render();
 
-// Grab Class, for each initeration of 'i' create a list and print HTML, append it.
+const tokyo = cookieStandLocation(3, 24, 1.2, 'Tokyo', hoursofoperation);
+tokyo.getCustomers();
+tokyo.getCookies();
+tokyo.render();
 
-let hoursArray = document.querySelector('.output')
-for (let i = 0; i < seattle.hoursofoperation.length; i++){
-    let variable = document.createElement("li");
-    variable.innerHTML = `${seattle.hoursofoperation[i]}: ${seattle.cookiesperhour[i]} cookies | ${tokyo.hoursofoperation[i]}: ${tokyo.cookiesperhour[i]} cookies | ${dubai.hoursofoperation[i]}: ${dubai.cookiesperhour[i]} cookies | ${paris.hoursofoperation[i]}: ${paris.cookiesperhour[i]} cookies | ${lima.hoursofoperation[i]}: ${lima.cookiesperhour[i]} cookies`;
-    hoursArray.append(variable);
-}
+const dubai = cookieStandLocation(11, 38, 3.7, 'Dubai', hoursofoperation);
+dubai.getCustomers();
+dubai.getCookies();
+dubai.render();
+
+const paris = cookieStandLocation(20, 38, 2.3, 'Paris', hoursofoperation);
+paris.getCustomers();
+paris.getCookies();
+paris.render();
+
+const lima = cookieStandLocation(2, 16, 4.6, 'Lima', hoursofoperation);
+lima.getCustomers();
+lima.getCookies();
+lima.render();
+
