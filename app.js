@@ -39,8 +39,8 @@ function cookieStandLocation(min, max, avg, location, hours){
         }
         return total
     }
-    stand.hourlytotal = function hourlytotal() {
-        let hourlytotal = [];
+    stand.hourlytotal = function hourlytotal() {    // re-examine this function and see if its working how you think it should. Then re-examine how youre using it.
+        let hourlytotal = [];                       // I suggest removing this function and using the global function Ive placed at the bottom.
         for (let i = 0; i < hoursofoperation.length; i++){
             let total = 0;
             for (let j = 0; j < this.cookiesperhour.length; j++) {
@@ -144,3 +144,19 @@ lima.render();
 lima.total();
 lima.hourlytotal();
 
+//lets add a global function here that sums the cookiesperhour arrays across all locations
+function getHourlySumsForAllLocations(){
+    // If seattle.cookiesperhour is an array that equals [22, 12, 3, 10, 5] and tokyo.cookiesperhour is an array that equals [3, 7, 7, 1, 14] 
+    //     then the hourlySums for seattle and tokyo would equal [25, 19, 10, 11, 19] 
+
+    let hourlySums = []
+    for(let i = 0; i < hoursofoperation.length; i++)
+    {
+        //what would you do here?
+    }
+
+    //return hourlySums
+}
+
+ // after we get the hourlySums we want to display them along the bottom row of hour table
+let hourlySums = getHourlySumsForAllLocations()
