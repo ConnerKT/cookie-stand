@@ -26,17 +26,37 @@ function cookieStandLocation(min, max, avg, location, hours){
 
     // The cookie math, that pushes the data we have into an array
     stand.getCookies = function getCookies() {
-        for (i = 0; i < this.hoursofoperation.length; i++ ) {
+        for (let i = 0; i < this.hoursofoperation.length; i++ ) {
             let cookies = Math.ceil(this.avg * this.getCustomers())
             this.cookiesperhour.push(cookies);
         }
         return this.cookiesperhour;
     }
+    stand.total = function total() {
+        let total = 0
+        for (let i = 0; i < this.cookiesperhour.length ; i++){
+            total += this.cookiesperhour[i];
+        }
+        return total
+    }
+    stand.hourlytotal = function hourlytotal() {
+        let hourlytotal = [];
+        for (let i = 0; i < hoursofoperation.length; i++){
+            let total = 0;
+            for (let j = 0; j < this.cookiesperhour.length; j++) {
+                total += this.cookiesperhour[j][i];
+            }
+            hourlytotal.push(total)
+        }
+        return hourlytotal;
+    }
+    
     // This is the render function. Its rendering all of the content we want on our HTML
     stand.render = function(){
         let Row = document.createElement('tr');
         let LocationTD = document.createElement('td');
         let thTemp = document.createElement('th');
+        
 
        // This for loop is to loop and create the hours of operation
         // This sets an empty string so the hours are lined up
@@ -49,6 +69,9 @@ function cookieStandLocation(min, max, avg, location, hours){
             thDemo.innerHTML = this.hoursofoperation[i];
             document.getElementById("cookietb").append(thDemo)
         }
+        let dailytotal = document.createElement("th");
+        dailytotal.innerHTML = "Daily Total"
+        document.getElementById("cookietb").append(dailytotal)
 
           // We are assigning the location data to locationTD as HTML
         LocationTD.innerHTML = this.location;
@@ -70,37 +93,54 @@ function cookieStandLocation(min, max, avg, location, hours){
             Row.append(tdDemo);
 
         }
- 
+        let dailytotaldata = document.createElement('td');
+        dailytotaldata.innerHTML = this.total();
+        Row.append(dailytotaldata)
+
+        
     }
     
        return stand;
-    
-}
+       
 
+}
+    let totalth = document.createElement("th");
+    totalth.innerHTML = "Total"
+    document.getElementById("cookietb").append(totalth);
 //Setting up the objects we want, but with its own unique data
 
 const seattle = cookieStandLocation(23, 65, 6.3, 'Seattle', hoursofoperation);
 seattle.getCustomers();
 seattle.getCookies();
 seattle.render();
+seattle.total();
+seattle.hourlytotal();
 
 const tokyo = cookieStandLocation(3, 24, 1.2, 'Tokyo', hoursofoperation);
 tokyo.getCustomers();
 tokyo.getCookies();
 tokyo.render();
+tokyo.total();
+tokyo.hourlytotal();
 
 const dubai = cookieStandLocation(11, 38, 3.7, 'Dubai', hoursofoperation);
 dubai.getCustomers();
 dubai.getCookies();
 dubai.render();
+dubai.total();
+dubai.hourlytotal();
 
 const paris = cookieStandLocation(20, 38, 2.3, 'Paris', hoursofoperation);
 paris.getCustomers();
 paris.getCookies();
 paris.render();
+paris.total();
+paris.hourlytotal();
 
 const lima = cookieStandLocation(2, 16, 4.6, 'Lima', hoursofoperation);
 lima.getCustomers();
 lima.getCookies();
 lima.render();
+lima.total();
+lima.hourlytotal();
 
