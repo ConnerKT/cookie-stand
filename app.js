@@ -39,8 +39,8 @@ function cookieStandLocation(min, max, avg, location, hours){
         }
         return total
     }
-    stand.hourlytotal = function hourlytotal() {
-        let hourlytotal = [];
+    stand.hourlytotal = function hourlytotal() {    // re-examine this function and see if its working how you think it should. Then re-examine how youre using it.
+        let hourlytotal = [];                       // I suggest removing this function and using the global function Ive placed at the bottom.
         for (let i = 0; i < hoursofoperation.length; i++){
             let total = 0;
             for (let j = 0; j < this.cookiesperhour.length; j++) {
@@ -159,3 +159,4 @@ function getHourlySumsForAllLocations(){
 }
 
  // after we get the hourlySums we want to display them along the bottom row of hour table
+let hourlySums = getHourlySumsForAllLocations()
