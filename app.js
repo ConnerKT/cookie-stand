@@ -39,7 +39,7 @@ function cookieStandLocation(min, max, avg, location, hours){
         }
         return total
     }
-    stand.hourlytotal = function hourlytotal() {    // re-examine this function and see if its working how you think it should. Then re-examine how youre using it.
+    /*stand.hourlytotal = function hourlytotal() {    // re-examine this function and see if its working how you think it should. Then re-examine how youre using it.
         let hourlytotal = [];                       // I suggest removing this function and using the global function Ive placed at the bottom.
         for (let i = 0; i < hoursofoperation.length; i++){
             let total = 0;
@@ -48,7 +48,7 @@ function cookieStandLocation(min, max, avg, location, hours){
             }
             hourlytotal.push(total)
         }
-        return hourlytotal;
+        return hourlytotal;*/
     }
     
     // This is the render function. Its rendering all of the content we want on our HTML
