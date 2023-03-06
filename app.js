@@ -49,7 +49,9 @@ function cookieStandLocation(min, max, avg, location, hours){
             hourlytotal.push(total)
         }
         return hourlytotal;*/
-    }
+ Class06-Tables
+    // }
+main
     
     // This is the render function. Its rendering all of the content we want on our HTML
     stand.render = function(){
@@ -98,15 +100,14 @@ function cookieStandLocation(min, max, avg, location, hours){
         Row.append(dailytotaldata)
 
         
+
     }
     
        return stand;
-       
 
+    
 }
-    let totalth = document.createElement("th");
-    totalth.innerHTML = "Total"
-    document.getElementById("cookietb").append(totalth);
+   
 //Setting up the objects we want, but with its own unique data
 
 const seattle = cookieStandLocation(23, 65, 6.3, 'Seattle', hoursofoperation);
@@ -114,35 +115,65 @@ seattle.getCustomers();
 seattle.getCookies();
 seattle.render();
 seattle.total();
-seattle.hourlytotal();
+//seattle.hourlytotal();
 
 const tokyo = cookieStandLocation(3, 24, 1.2, 'Tokyo', hoursofoperation);
 tokyo.getCustomers();
 tokyo.getCookies();
 tokyo.render();
 tokyo.total();
-tokyo.hourlytotal();
+//tokyo.hourlytotal();
 
 const dubai = cookieStandLocation(11, 38, 3.7, 'Dubai', hoursofoperation);
 dubai.getCustomers();
 dubai.getCookies();
 dubai.render();
 dubai.total();
-dubai.hourlytotal();
+//dubai.hourlytotal();
 
 const paris = cookieStandLocation(20, 38, 2.3, 'Paris', hoursofoperation);
 paris.getCustomers();
 paris.getCookies();
 paris.render();
 paris.total();
-paris.hourlytotal();
+//paris.hourlytotal();
 
 const lima = cookieStandLocation(2, 16, 4.6, 'Lima', hoursofoperation);
 lima.getCustomers();
 lima.getCookies();
 lima.render();
 lima.total();
-lima.hourlytotal();
+//lima.hourlytotal();
+
+//lets add a global function here that sums the cookiesperhour arrays across all locations
+function getHourlySumsForAllLocations(){
+    // If seattle.cookiesperhour is an array that equals [22, 12, 3, 10, 5] and tokyo.cookiesperhour is an array that equals [3, 7, 7, 1, 14] 
+    //     then the hourlySums for seattle and tokyo would equal [25, 19, 10, 11, 19] 
+
+    let hourlySums = []
+    for(let i = 0; i < hoursofoperation.length; i++)
+    {
+        let hourlytotal = seattle.cookiesperhour[i]+tokyo.cookiesperhour[i]+dubai.cookiesperhour[i]+paris.cookiesperhour[i]+lima.cookiesperhour[i]
+        hourlySums.push(hourlytotal)
+    }
+
+    //return hourlySums
+
+    let hourtr = document.createElement("tr");
+    let hourth = document.createElement("th");
+    document.getElementById("cookietb").append(hourtr)
+     hourth.innerHTML = "Total";
+     hourtr.append(hourth)
+    for (x = 0; x < hoursofoperation.length; x++){
+        let hourtotal = document.createElement("th")
+        hourtotal.innerHTML = hourlySums[x]
+        hourtr.append(hourtotal)
+
+    }
+}
+
+ // after we get the hourlySums we want to display them along the bottom row of hour table
+let hourlySums = getHourlySumsForAllLocations()
 
 //lets add a global function here that sums the cookiesperhour arrays across all locations
 function getHourlySumsForAllLocations(){
