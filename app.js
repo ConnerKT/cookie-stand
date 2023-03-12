@@ -8,6 +8,10 @@ function getRandom(max, min) {
 // Declaring Hours Of Operation as a variable to be reused in constr. function
 let hoursofoperation = ["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"]
 
+const button = document.getElementById("buttonclick")
+
+
+
 // Defining Constructor Function (Parameters are the info we store uniquely for each object we create from this function)
 function cookieStandLocation(min, max, avg, location, hours){
     let stand = {};
@@ -132,6 +136,7 @@ lima.render();
 lima.total();
 //lima.hourlytotal();
 
+
 //lets add a global function here that sums the cookiesperhour arrays across all locations
 function getHourlySumsForAllLocations(){
     // If seattle.cookiesperhour is an array that equals [22, 12, 3, 10, 5] and tokyo.cookiesperhour is an array that equals [3, 7, 7, 1, 14] 
@@ -161,4 +166,6 @@ function getHourlySumsForAllLocations(){
 
  // after we get the hourlySums we want to display them along the bottom row of hour table
 let hourlySums = getHourlySumsForAllLocations()
+
+
 

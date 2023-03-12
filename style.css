@@ -171,3 +171,18 @@ h2 {
 .imgp {
     font-size:40px
 }
+.form {
+    background-color: #adadad;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:50px;
+    height:50px;
+    box-shadow:0 0 13px rgb(0 0 0);
+    
+}
+.formInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
