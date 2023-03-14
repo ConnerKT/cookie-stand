@@ -140,7 +140,6 @@ document.getElementById("buttonclick").addEventListener("click", formLocation);
 
 function formLocation(event){
     event.preventDefault();
-
     let button = document.getElementById("cityName").value;
     let cookietb = document.getElementById("cookietb");
     const newLocation = cookieStandLocation(1, 20, 6.3, button, hoursofoperation);
