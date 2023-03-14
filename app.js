@@ -8,8 +8,6 @@ function getRandom(max, min) {
 // Declaring Hours Of Operation as a variable to be reused in constr. function
 let hoursofoperation = ["6am","7am","8am","9am","10am","11am","12am","1pm","2pm","3pm","4pm","5pm","6pm","7pm"]
 
-const button = document.getElementById("cityName").value
-
 
 
 
@@ -135,7 +133,24 @@ lima.getCustomers();
 lima.getCookies();
 lima.render();
 lima.total();
+
 //lima.hourlytotal();
+document.getElementById("buttonclick").addEventListener("click", formLocation);
+
+
+function formLocation(event){
+    event.preventDefault();
+
+    let button = document.getElementById("cityName").value;
+    let cookietb = document.getElementById("cookietb");
+    const newLocation = cookieStandLocation(1, 20, 6.3, button, hoursofoperation);
+    newLocation.getCustomers();
+    newLocation.getCookies();
+    newLocation.render();
+    newLocation.total();
+
+
+}
 
 
 //lets add a global function here that sums the cookiesperhour arrays across all locations
@@ -154,7 +169,9 @@ function getHourlySumsForAllLocations(){
 
     let hourtr = document.createElement("tr");
     let hourth = document.createElement("th");
-    document.getElementById("cookietb").append(hourtr)
+    let hourft = document.createElement("tfoot")
+    document.getElementById("cookietb").append(hourft)
+    hourft.append(hourtr)
      hourth.innerHTML = "Total";
      hourtr.append(hourth)
     for (x = 0; x < hoursofoperation.length; x++){
@@ -164,6 +181,7 @@ function getHourlySumsForAllLocations(){
 
     }
 }
+
 
  // after we get the hourlySums we want to display them along the bottom row of hour table
 let hourlySums = getHourlySumsForAllLocations()
