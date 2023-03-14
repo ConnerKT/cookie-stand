@@ -148,6 +148,29 @@ function formLocation(event){
     newLocation.getCookies();
     newLocation.render();
     newLocation.total();
+    
+    document.getElementById("footer").innerHTML = " "
+
+    let hourlySums = []
+    for(let i = 0; i < hoursofoperation.length; i++)
+    {
+        let hourlytotal = seattle.cookiesperhour[i]+tokyo.cookiesperhour[i]+dubai.cookiesperhour[i]+paris.cookiesperhour[i]+lima.cookiesperhour[i] + newLocation.cookiesperhour[i]
+        hourlySums.push(hourlytotal)
+
+    }
+    let hourtr = document.createElement("tr");
+    let hourth = document.createElement("th");
+
+  
+    document.getElementById("footer").append(hourtr)
+     hourth.innerHTML = "Total";
+     hourtr.append(hourth)
+    for (x = 0; x < hoursofoperation.length; x++){
+        let hourtotal = document.createElement("th")
+        hourtotal.innerHTML = hourlySums[x]
+        hourtr.append(hourtotal)
+
+    }
 
 
 }
@@ -169,9 +192,9 @@ function getHourlySumsForAllLocations(){
 
     let hourtr = document.createElement("tr");
     let hourth = document.createElement("th");
-    let hourft = document.createElement("tfoot")
-    document.getElementById("cookietb").append(hourft)
-    hourft.append(hourtr)
+
+  
+    document.getElementById("footer").append(hourtr)
      hourth.innerHTML = "Total";
      hourtr.append(hourth)
     for (x = 0; x < hoursofoperation.length; x++){
